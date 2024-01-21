@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page with Styled Sudoku Game</title>
+    <title>Landing Page with Voting Scale</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(180deg, #191414 0%, #121212 100%);
+            background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
             color: white;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -20,6 +20,8 @@
 
         .landing-page {
             text-align: center;
+            width: 80%; /* Set the width as needed */
+            margin: auto; /* Center the content horizontally */
         }
 
         h1, p {
@@ -39,119 +41,40 @@
             }
         }
 
-        #sudoku-container {
+        #voting-scale {
             margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
         }
 
-        table {
-            border-collapse: collapse;
-            border: 2px solid white;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: auto; /* Center the table */
-        }
-
-        td {
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            font-size: 1.2em;
+        .vote-number {
+            font-size: 1.5em;
             cursor: pointer;
-            user-select: none;
-            border: 1px solid white;
-        }
-
-        input {
-            width: 100%;
-            height: 100%;
-            border: none;
-            text-align: center;
-            font-size: 1.2em;
-            background-color: #2c3e50; /* Background color */
-            color: #ecf0f1; /* Text color */
-            border-radius: 5px;
-        }
-
-        /* Round the corners of the larger square */
-        tr:nth-child(3n) td:nth-child(3n), tr:nth-child(3n) td:nth-child(3n+1), tr:nth-child(3n) td:nth-child(3n+2),
-        tr:nth-child(3n+1) td:nth-child(3n), tr:nth-child(3n+1) td:nth-child(3n+1), tr:nth-child(3n+1) td:nth-child(3n+2),
-        tr:nth-child(3n+2) td:nth-child(3n), tr:nth-child(3n+2) td:nth-child(3n+1), tr:nth-child(3n+2) td:nth-child(3n+2) {
-            border-radius: 10px;
-        }
-
-        /* Add thicker lines to divide cells into groups of 9 */
-        td:nth-child(3n), td:nth-child(3n+1) {
-            border-right: 3px solid white;
-        }
-
-        tr:nth-child(3n), tr:nth-child(3n+1) {
-            border-bottom: 3px solid white;
-        }
-
-        td:nth-child(3n+2) {
-            border-right: 2px solid white;
-        }
-
-        tr:nth-child(3n+2) {
-            border-bottom: 2px solid white;
         }
     </style>
 </head>
 <body>
     <div class="landing-page">
-        <h1>Ho creato questo sito web con Chat GPT, ormai sarà una cavolata fare cose del genere. Ciò che mi ha aperto la via è questo video che ti consiglio di vedere <a href="https://www.youtube.com/watch?v=bk-nQ7HF6k4&t=2873s" target="_blank" rel="noopener noreferrer">qui</a> Dal minuto 11.55 è quando dovresti iniziare a vedere il podcast. Bella, Crazy pue</h1>
-        <div id="sudoku-container">
-            <h2>Sudoku Game</h2>
-            <table id="sudoku-board"></table>
+        <h1>Vote how QT I am</h1>
+        <div id="voting-scale">
+            <span class="vote-number" onclick="vote(1)">1</span>
+            <span class="vote-number" onclick="vote(2)">2</span>
+            <span class="vote-number" onclick="vote(3)">3</span>
+            <span class="vote-number" onclick="vote(4)">4</span>
+            <span class="vote-number" onclick="vote(5)">5</span>
+            <span class="vote-number" onclick="vote(6)">6</span>
+            <span class="vote-number" onclick="vote(7)">7</span>
+            <span class="vote-number" onclick="vote(8)">8</span>
+            <span class="vote-number" onclick="vote(9)">9</span>
+            <span class="vote-number" onclick="vote(10)">10</span>
         </div>
     </div>
 
     <script>
-        function generateSudokuBoard() {
-            // This is just a placeholder function. You may replace it with your own Sudoku generation logic.
-            // The generated Sudoku should be a 9x9 matrix with numbers 1 to 9.
-            // For simplicity, this example uses a hardcoded Sudoku.
-            return [
-                [5, 3, 0, 0, 7, 0, 0, 0, 0],
-                [6, 0, 0, 1, 9, 5, 0, 0, 0],
-                [0, 9, 8, 0, 0, 0, 0, 6, 0],
-                [8, 0, 0, 0, 6, 0, 0, 0, 3],
-                [4, 0, 0, 8, 0, 3, 0, 0, 1],
-                [7, 0, 0, 0, 2, 0, 0, 0, 6],
-                [0, 6, 0, 0, 0, 0, 2, 8, 0],
-                [0, 0, 0, 4, 1, 9, 0, 0, 5],
-                [0, 0, 0, 0, 8, 0, 0, 7, 9]
-            ];
+        function vote(score) {
+            alert('You voted ' + score + ' out of 10!');
+            // You can customize this function to handle the user's vote as needed
         }
-
-        function renderSudokuBoard() {
-            const sudokuBoard = generateSudokuBoard();
-            const table = document.getElementById("sudoku-board");
-
-            for (let i = 0; i < 9; i++) {
-                const row = document.createElement("tr");
-
-                for (let j = 0; j < 9; j++) {
-                    const cell = document.createElement("td");
-                    const inputValue = sudokuBoard[i][j] !== 0 ? sudokuBoard[i][j] : '';
-                    
-                    cell.innerHTML = `<input type="text" maxlength="1" value="${inputValue}" ${sudokuBoard[i][j] !== 0 ? 'readonly' : ''}>`;
-                    cell.addEventListener("click", () => handleClick(i, j));
-
-                    row.appendChild(cell);
-                }
-
-                table.appendChild(row);
-            }
-        }
-
-        function handleClick(row, col) {
-            // Placeholder function for future interactions
-        }
-
-        window.onload = function() {
-            renderSudokuBoard();
-        };
     </script>
 </body>
 </html>
