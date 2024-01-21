@@ -23,11 +23,11 @@
         }
 
         h1, p {
-            font-size: 2em;
+            font-size: 1.5em;
             white-space: nowrap;
             overflow: hidden;
             border-right: 2px solid white;
-            animation: typing 4s steps(30) infinite;
+            animation: typing 6s steps(60) forwards; /* Adjust the duration and steps as needed */
         }
 
         @keyframes typing {
@@ -99,8 +99,7 @@
 </head>
 <body>
     <div class="landing-page">
-        <h1>Ho creato questo sito web con Chat GPT, ormai sarà una cavolata fare cose del genere. Ciò che mi ha aperto la via è questo video che ti consiglio di vedere https://www.youtube.com/watch?v=bk-nQ7HF6k4&t=2873s </h1>
-        <p>ALE</p>
+        <h1>Ho creato questo sito web con Chat GPT, ormai sarà una cavolata fare cose del genere. Ciò che mi ha aperto la via è questo video che ti consiglio di vedere <a href="https://www.youtube.com/watch?v=bk-nQ7HF6k4&t=2873s" target="_blank" rel="noopener noreferrer">qui</a> Dal minuto 11.55 è quando dovresti iniziare a vedere il podcast. Bella, Crazy pue</h1>
         <div id="sudoku-container">
             <h2>Sudoku Game</h2>
             <table id="sudoku-board"></table>
@@ -150,7 +149,9 @@
             // Placeholder function for future interactions
         }
 
-        window.onload = renderSudokuBoard;
+        window.onload = function() {
+            renderSudokuBoard();
+        };
     </script>
 </body>
 </html>
