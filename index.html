@@ -39,6 +39,7 @@
             border: 2px solid white;
             border-radius: 10px;
             overflow: hidden;
+            margin: auto; /* Center the table */
         }
 
         td {
@@ -48,6 +49,8 @@
             font-size: 1.2em;
             cursor: pointer;
             user-select: none;
+            border: 1px solid white;
+            border-radius: 5px;
         }
 
         input {
@@ -58,8 +61,16 @@
             font-size: 1.2em;
             background-color: #2c3e50; /* Background color */
             color: #ecf0f1; /* Text color */
-            border: 1px solid white;
             border-radius: 5px;
+        }
+
+        /* Add thicker lines to divide cells into groups of 9 */
+        td:nth-child(3n), td:nth-child(3n+1), td:nth-child(3n+2) {
+            border-right: 2px solid white;
+        }
+
+        tr:nth-child(3n), tr:nth-child(3n+1), tr:nth-child(3n+2) td {
+            border-bottom: 2px solid white;
         }
     </style>
 </head>
