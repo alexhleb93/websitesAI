@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Landing Page with Sudoku Game</title>
     <style>
         body {
             margin: 0;
@@ -14,6 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             height: 100vh;
         }
 
@@ -28,12 +29,93 @@
         p {
             font-size: 1.5em;
         }
+
+        #sudoku-container {
+            margin-top: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid white;
+            text-align: center;
+            font-size: 1.2em;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            text-align: center;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
     <div class="landing-page">
-        <h1>Ho creato questo sito web con intelligenza artificale</h1>
+        <h1>Ho creato questo sito web con intelligenza ARTIFICIALE</h1>
         <p>ALE</p>
+        <div id="sudoku-container">
+            <h2>Sudoku Game</h2>
+            <table id="sudoku-board"></table>
+        </div>
     </div>
+
+    <script>
+        // Function to generate a new Sudoku board (placeholder)
+        function generateSudokuBoard() {
+            // This is just a placeholder function. You may replace it with your own Sudoku generation logic.
+            // The generated Sudoku should be a 9x9 matrix with numbers 1 to 9.
+            // For simplicity, this example uses a hardcoded Sudoku.
+            return [
+                [5, 3, 0, 0, 7, 0, 0, 0, 0],
+                [6, 0, 0, 1, 9, 5, 0, 0, 0],
+                [0, 9, 8, 0, 0, 0, 0, 6, 0],
+                [8, 0, 0, 0, 6, 0, 0, 0, 3],
+                [4, 0, 0, 8, 0, 3, 0, 0, 1],
+                [7, 0, 0, 0, 2, 0, 0, 0, 6],
+                [0, 6, 0, 0, 0, 0, 2, 8, 0],
+                [0, 0, 0, 4, 1, 9, 0, 0, 5],
+                [0, 0, 0, 0, 8, 0, 0, 7, 9]
+            ];
+        }
+
+        // Function to render the Sudoku board
+        function renderSudokuBoard() {
+            const sudokuBoard = generateSudokuBoard();
+            const table = document.getElementById("sudoku-board");
+
+            for (let i = 0; i < 9; i++) {
+                const row = document.createElement("tr");
+
+                for (let j = 0; j < 9; j++) {
+                    const cell = document.createElement("td");
+                    const inputValue = sudokuBoard[i][j] !== 0 ? sudokuBoard[i][j] : '';
+                    
+                    cell.innerHTML = `<input type="text" maxlength="1" value="${inputValue}" ${sudokuBoard[i][j] !== 0 ? 'readonly' : ''}>`;
+                    cell.addEventListener("click", () => handleClick(i, j));
+
+                    row.appendChild(cell);
+                }
+
+                table.appendChild(row);
+            }
+        }
+
+        // Function to handle cell clicks (placeholder)
+        function handleClick(row, col) {
+            // This is just a placeholder function. You may replace it with your own logic.
+            alert(`Clicked on cell (${row + 1}, ${col + 1})`);
+        }
+
+        // Render the Sudoku board on page load
+        window.onload = renderSudokuBoard;
+    </script>
 </body>
 </html>
