@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page with Sudoku Game</title>
+    <title>Landing Page with Styled Sudoku Game</title>
     <style>
         body {
             margin: 0;
@@ -36,12 +36,14 @@
 
         table {
             border-collapse: collapse;
+            border: 2px solid white;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         td {
             width: 30px;
             height: 30px;
-            border: 1px solid white;
             text-align: center;
             font-size: 1.2em;
             cursor: pointer;
@@ -54,6 +56,10 @@
             border: none;
             text-align: center;
             font-size: 1.2em;
+            background-color: #2c3e50; /* Background color */
+            color: #ecf0f1; /* Text color */
+            border: 1px solid white;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -68,7 +74,6 @@
     </div>
 
     <script>
-        // Function to generate a new Sudoku board (placeholder)
         function generateSudokuBoard() {
             // This is just a placeholder function. You may replace it with your own Sudoku generation logic.
             // The generated Sudoku should be a 9x9 matrix with numbers 1 to 9.
@@ -86,7 +91,6 @@
             ];
         }
 
-        // Function to render the Sudoku board
         function renderSudokuBoard() {
             const sudokuBoard = generateSudokuBoard();
             const table = document.getElementById("sudoku-board");
@@ -108,13 +112,10 @@
             }
         }
 
-        // Function to handle cell clicks (placeholder)
         function handleClick(row, col) {
-            // This is just a placeholder function. You may replace it with your own logic.
-            alert(`Clicked on cell (${row + 1}, ${col + 1})`);
+            // Placeholder function for future interactions
         }
 
-        // Render the Sudoku board on page load
         window.onload = renderSudokuBoard;
     </script>
 </body>
