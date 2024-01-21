@@ -22,12 +22,21 @@
             text-align: center;
         }
 
-        h1 {
+        h1, p {
             font-size: 2em;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid white;
+            animation: typing 4s steps(30) infinite;
         }
 
-        p {
-            font-size: 1.5em;
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
         }
 
         #sudoku-container {
@@ -50,7 +59,6 @@
             cursor: pointer;
             user-select: none;
             border: 1px solid white;
-            border-radius: 5px;
         }
 
         input {
@@ -64,12 +72,27 @@
             border-radius: 5px;
         }
 
+        /* Round the corners of the larger square */
+        tr:nth-child(3n) td:nth-child(3n), tr:nth-child(3n) td:nth-child(3n+1), tr:nth-child(3n) td:nth-child(3n+2),
+        tr:nth-child(3n+1) td:nth-child(3n), tr:nth-child(3n+1) td:nth-child(3n+1), tr:nth-child(3n+1) td:nth-child(3n+2),
+        tr:nth-child(3n+2) td:nth-child(3n), tr:nth-child(3n+2) td:nth-child(3n+1), tr:nth-child(3n+2) td:nth-child(3n+2) {
+            border-radius: 10px;
+        }
+
         /* Add thicker lines to divide cells into groups of 9 */
-        td:nth-child(3n), td:nth-child(3n+1), td:nth-child(3n+2) {
+        td:nth-child(3n), td:nth-child(3n+1) {
+            border-right: 3px solid white;
+        }
+
+        tr:nth-child(3n), tr:nth-child(3n+1) {
+            border-bottom: 3px solid white;
+        }
+
+        td:nth-child(3n+2) {
             border-right: 2px solid white;
         }
 
-        tr:nth-child(3n), tr:nth-child(3n+1), tr:nth-child(3n+2) td {
+        tr:nth-child(3n+2) {
             border-bottom: 2px solid white;
         }
     </style>
